@@ -1,34 +1,22 @@
 //set variables needed
+const button = document.getElementById("button");
 
-
-
-let button = document.getElementById("button");
-button.addEventListener('click', function(e) {
-  //debugger  
-  //e.preventDefault()
-  let billAmount = document.getElementById("bill_amount")
-  let percent = parseInt(document.getElementById("percent").value)
-  let billAmountParsed = parseInt(billAmount.value)
-  
-  //let totalDue = (billAmountParsed + tipAmount)
-  //console.log('billAmountParsed:',billAmountParsed)
-  //console.log('percent', percent.toFixed(2))
-  let totalDue = calculateTip(billAmountParsed, percent)
+button.addEventListener('click', function(e) {  
+  const billAmountCents = document.getElementById("bill_amount").value * 100
+  const percent = parseInt(document.getElementById("percent").value)
+  const totalDue = calculateTip(billAmountCents, percent)
 
   displayResults(totalDue)
 }, false)
 
-function calculateTip(billAmountParsed, percent) {
-  let tipAmount = (billAmountParsed.toFixed(2)) * (percent/100)
-
-  console.log("tip amount is", tipAmount)
-  let totalDue = billAmountParsed + tipAmount
-  //console.log("total due:", totalDue.toFixed(2))
-  return totalDue
+function calculateTip(billAmountCents, percent) {
+  const tipAmount = (billAmountCents * (percent/100))/100  
+  const calculatedTotalDue = ((billAmountCents/100) + tipAmount).toFixed(2)
+  
+  return calculatedTotalDue   //need to return this bc totalDue is equal to the return value of this function
 }
 
 function displayResults(totalDue) {
-  console.log("total due:",totalDue.toFixed(2))
-  let total = document.getElementById("total")
-  total.innerHTML = totalDue.toFixed(2)
+  const total = document.getElementById("total")
+  total.innerText = totalDue
 }
