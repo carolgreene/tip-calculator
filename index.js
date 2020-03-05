@@ -1,5 +1,6 @@
 //set variables needed
 const button = document.getElementById("button");
+const clear = document.getElementById("clear");
 
 button.addEventListener('click', function(e) {  
   const billAmountCents = document.getElementById("bill_amount").value * 100
@@ -8,6 +9,10 @@ button.addEventListener('click', function(e) {
 
   displayResults(totalDue)
 }, false)
+
+clear.addEventListener('click', function(e) {
+  clearFields()
+})
 
 function calculateTip(billAmountCents, percent) {
   const tipAmount = (billAmountCents * (percent/100))/100  
@@ -19,4 +24,10 @@ function calculateTip(billAmountCents, percent) {
 function displayResults(totalDue) {
   const total = document.getElementById("total")
   total.innerText = totalDue
+}
+
+function clearFields() {
+  document.getElementById("bill_amount").value = ""
+  document.getElementById("percent").selectedIndex = 0
+  document.getElementById("total").innerText = ""
 }

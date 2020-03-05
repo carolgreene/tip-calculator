@@ -6,8 +6,16 @@
   margin-top: 50px; 
   margin-bottom: 50px;
   padding: 20px; 
+  background-color: #6699ff;
 }
 
 h4 {
   text-align: center;
+}
+
+#clear {
+  position: absolute;
+  bottom: 90px;
+  left: 50%;
+  margin-left: -40.5px;
 }
