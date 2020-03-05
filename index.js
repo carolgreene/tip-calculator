@@ -23,7 +23,7 @@ function calculateTip(billAmountCents, percent) {
 
 function displayResults(totalDue) {
   const total = document.getElementById("total")
-  total.innerText = totalDue
+  total.innerText = "$" +totalDue
 }
 
 function clearFields() {
